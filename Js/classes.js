@@ -1,5 +1,5 @@
 class Filme{
-    constructor(id, titulo, direcao, atores, sino, ano, classi, genero, duracao, cartaz, ranking)
+    constructor(id, titulo, ano, genero, duracao, sino, cartaz, direcao, atores, classi, ranking)
     {
         this.id=id;
         this.titulo = titulo;
@@ -12,21 +12,20 @@ class Filme{
         this.duracao = duracao;
         this.cartaz = cartaz;
         this.ranking = ranking;
+        this.btnDetalhes = null;
     }
-}
-
-getCard = async() =>{
+    getCard = async() =>{
     let card = document.createElement("div");
     card.setAttribute("class","card");
     let imgCartaz = document.createElement("img");
-    imgCartaz.setAttribute("class","card-img-topz");
+    imgCartaz.setAttribute("class","card-img-top");
     imgCartaz.setAttribute("src",this.cartaz);
     let cardBody = document.createElement("div");
     cardBody.setAttribute("class","card-body");
     let hCardTitle=document.createElement("h5");
     hCardTitle.setAttribute("class","card-title");
     let divDetalhes = document.createElement("div");
-    divDetalhes.setAttribute("style","display:flex; justify-content:space-aroud;");
+    divDetalhes.setAttribute("style","display:flex; justify-content:space-around;");
     let divGenero=document.createElement("div");
     divGenero.setAttribute("style","flex-grow:1;");
     let divAnoProducao=document.createElement("div");
@@ -44,15 +43,19 @@ getCard = async() =>{
     card.appendChild(cardBody);
     cardBody.appendChild(hCardTitle);
     cardBody.appendChild(divDetalhes);
+
+    this.setAttribute();
+    cardBody.appendChild(this.getbtnDetalhes());
     return card;
 }
+}
+setBtnDetalhes= ()=>{ 
+    this.btnDetalhes = document.createElement("button");
+    this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
+    this.btnDetalhes.setAttribute("id", this.id);
+    this.btnDetalhes.setAttribute("class","btnDetalhesFilme");
+}
 
-// Criar uma instância da classe Filme
-let meuFilme = new Filme("id_do_filme", "Título do Filme", "Direção do Filme", "Atores do Filme", "Sino do Filme", "Ano do Filme", "Classificação do Filme", "Gênero do Filme", "Duração do Filme", "URL do Cartaz do Filme", "Ranking do Filme");
-
-// Chamar o método getCard para obter um elemento HTML para exibir o filme
-let meuCard = await meuFilme.getCard();
-
-// Adicionar o elemento HTML à página ou a outro elemento da página
-let minhaListaDeFilmes = document.querySelector("#lista-de-filmes");
-minhaListaDeFilmes.appendChild(meuCard);
+getbtnDetalhes=()=> {
+    return this.btnDetalhes
+}
