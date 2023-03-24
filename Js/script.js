@@ -28,57 +28,48 @@ btnBuscarFilme.onclick = async ()=>{
             });
             listarFilmes(filmes);
         });
-
     }
     return false;
-
 };
-async function detalhesFilme(id) {
-    fetch("https://www.omdbapi.com/?i=tt3896198&apikey=2b38f89a&i=" + id)
-        .then((resp) => resp.json())
-        .then((resp) => {
-            console.log(resp);
-            let filme = new Filme(
-                resp.imdbID,
-                resp.Title,
-                resp.Year,
-                resp.Genre.split(","),
-                resp.Runtime,
-                resp.Plot,
-                resp.Poster,
-                resp.Director,
-                resp.Actors.split(","),
-                resp.Awards,
-                resp.imdbRating
-            );
-            console.log(filme);
-
-            let listaFilmes = document.querySelector("#lista-filmes");
-            listaFilmes.innerHTML = "";
-            let detalheFilmes = document.querySelector("#mostrar-filme");
-            detalheFilmes.innerHTML = "";
-
-            detalheFilmes.appendChild(filme.getCardDetalhes());
-            console.log(detalheFilmes);
-        });
-
+let detalhesFilme = async (id)=>{
+    fetch("https://www.omdbapi.com/?apikey=2b38f89a&i="+id)
+    .then((resp)=>resp.json())
+    .then((resp)=>{
+        console.log(resp);
+        let filme = new Filme(
+            resp.imdbID,
+            resp.Title,
+            resp.Year,
+            resp.Genre.split(","),
+            resp.Runtime,
+            resp.Plot,
+            resp.Poster,
+            resp.Director,
+            resp.Actors.split(","),
+            resp.Awards,
+            resp.imdbRating
+        )
+        document.querySelector("#lista-filme").style.display="none";
+        document.querySelector("#mostrar-filme").style.display="flex";
+        console.log(filme.getCardDetalhes());
+        document.querySelector("#mostrar-filme").appendChild(filme.getCardDetalhes());
+    })
     return false;
 }
-
-let listarFilmes = async(filmes)=>{
-    let listaFilmes = document.querySelector("#lista-filmes");
+let listarFilmes = async (filmes) => {
+    let listaFilmes = await document.querySelector("#lista-filme");
+    listaFilmes.style.dispay="flex";
     listaFilmes.innerHTML="";
-    let detalheFilmes = document.querySelector("#mostrar-filme");
-    
-    //console.log(listaFilmes);
-    if(filmes.length>0){
-        filmes.forEach(async(filme)=>{
-            //console.log(filme);
-            listaFilmes.appendChild(await filme.getCard());
-            filme.getBtnDetalhes().onclick=()=>{
-                detalhesFilme(filme.id);
-            }
-        });
+        document.querySelector("#lista-filme").innerHTML="";
+        document.querySelector("#mostrar-filme").style.display="none";
+       
+
+    if (filmes.length > 0) {
+      filmes.forEach(async (filme) => {
+        listaFilmes.appendChild(await filme.getCard());
+        filme.getBtnDetalhes().onclick=()=>{
+         detalhesFilme(filme.id);
+        }
+      });
     }
-    return false;
-};
+  }

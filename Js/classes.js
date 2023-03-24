@@ -1,3 +1,16 @@
+class Ator{
+    constructor(id, nome){
+        this.nome=nome;
+        this.id=id;
+    }
+}
+
+class Diretor{
+    constructor(id, nome){
+        this.nome=nome;
+        this.id=id;
+    }
+}
 class Filme{
     constructor(id, titulo, ano, genero, duracao, sino, cartaz, direcao, atores, classi, ranking, btnDetalhes)
     {
@@ -12,7 +25,7 @@ class Filme{
         this.atores = atores;
         this.classi = classi;
         this.ranking = ranking;
-        this.btnDetalhes=btnDetalhes;
+        this.btnDetalhes=null;
     }
 
     getCard = async() =>{
@@ -58,13 +71,14 @@ setBtnDetalhes= () =>{
     this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
     this.btnDetalhes.setAttribute("id",this.id);
     this.btnDetalhes.setAttribute("class","btnDetalhesFilme");
-};
+}
 
-getCardDetalhes = () => {
+getCardDetalhes =  () => {
+    
     let cardDetalhe = document.createElement("div");
     cardDetalhe.setAttribute("class", "cardFilmeDeth");
     let cardImg = document.createElement("img");
-    cardImg.setAttribute("class", "card-img-topz");
+    cardImg.setAttribute("class", "card-img-top");
     cardImg.setAttribute("src", this.cartaz);
     let divSimDetalhes = document.createElement("div");
     divSimDetalhes.setAttribute("class", "divCardDetalhes");
@@ -116,11 +130,11 @@ getCardDetalhes = () => {
     divDetalhes.appendChild(filmDura);
   
     return cardDetalhe;
+
   };
   
 
 getBtnDetalhes = () =>{
     return this.btnDetalhes;
 }
-
 }
