@@ -1,16 +1,3 @@
-class Ator{
-    constructor(id, nome){
-        this.nome=nome;
-        this.id=id;
-    }
-}
-
-class Diretor{
-    constructor(id, nome){
-        this.nome=nome;
-        this.id=id;
-    }
-}
 class Filme{
     constructor(id, titulo, ano, genero, duracao, sino, cartaz, direcao, atores, classi, ranking, btnDetalhes)
     {
@@ -128,12 +115,20 @@ getCardDetalhes =  () => {
     divDetalhes.appendChild(filmRank);
     divDetalhes.appendChild(filmAva);
     divDetalhes.appendChild(filmDura);
-  
-    return cardDetalhe;
 
+    let btnSalvar=document.createElement("button");
+    btnSalvar.appendChild(document.createTextNode("Salvar"));
+    btnSalvar.setAttribute("id", "btnSalvar");
+    divDetalhes.appendChild(btnSalvar);
+
+    let btnFechar = document.createElement("button");
+    btnFechar.appendChild(document.createTextNode("Fechar"));
+
+    btnFechar.setAttribute("id", "btnFechar");
+    divDetalhes.appendChild(btnFechar);
+    return cardDetalhe;
   };
   
-
 getBtnDetalhes = () =>{
     return this.btnDetalhes;
 }

@@ -1,5 +1,6 @@
 let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
+let navfavoritos = document.querySelector("#nav-favoritos");
 
 btnBuscarFilme.onclick = async ()=>{
     if(inputBuscarFilme.value.length > 0)
@@ -53,12 +54,36 @@ let detalhesFilme = async (id)=>{
         document.querySelector("#mostrar-filme").style.display="flex";
         console.log(filme.getCardDetalhes());
         document.querySelector("#mostrar-filme").appendChild(filme.getCardDetalhes());
-    })
-    return false;
-}
+
+        document.querySelector("#btnFechar").onclick=()=>{
+            document.querySelector("#lista-filmes").style.display="flex";
+            document.querySelector("#mostrar-filme").innerHTML="";
+            document.querySelector("#mostrar-filme").innerHTML="";
+        }
+
+        document.querySelector("#btnSalvar").onclick=()=>{
+
+            let filmeString = localStorage.getItem('Favoritos');
+            let filmes = [];
+          
+            if (filmeString) {
+              filmes = JSON.parse(filmeString);
+            }
+            
+            filmes.push(filme);
+
+            localStorage.setItem('Favoritos', JSON.stringify(filmes));
+        }
+
+    });
+
+        return false;  
+    }
+  
+
 let listarFilmes = async (filmes) => {
-    let listaFilmes = await document.querySelector("#lista-filme");
-    listaFilmes.style.dispay="flex";
+    let listaFilmes =  document.querySelector("#lista-filme");
+    listaFilmes.style.display="flex";
     listaFilmes.innerHTML="";
         document.querySelector("#lista-filme").innerHTML="";
         document.querySelector("#mostrar-filme").style.display="none";
@@ -73,3 +98,34 @@ let listarFilmes = async (filmes) => {
       });
     }
   }
+
+  
+function listarFavoritos() {
+    
+    const favoritos = JSON.parse(localStorage.getItem('Favoritos'));
+    const filmesFavoritos = [];
+
+    favoritos.forEach((item) => {
+      const filme = new Filme(
+      item.id,
+      item.titulo,
+      item.ano,  
+      item.genero,
+      null,
+      null,
+      item.cartaz,
+      null,
+      null,
+      item.classi,
+      null
+  );
+      favoritos.push(filme);
+  });
+
+  listarFilmes(favoritos);
+}
+
+
+navfavoritos.onclick = () => {
+listarFavoritos()
+}
