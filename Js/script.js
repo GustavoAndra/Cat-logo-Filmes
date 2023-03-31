@@ -66,6 +66,15 @@ let detalhesFilme = async (id)=>{
             document.querySelector("#mostrar-filme").style.display="none";
         }
 
+        document.querySelector("#btnDesfavoritar").onclick = () =>{
+            let filmesFavoritos = JSON.parse(localStorage.getItem('Favoritos'));  
+        
+            filmesFavoritos = filmesFavoritos.filter(pegaId => pegaId.id!==filme.id);
+        
+            localStorage.setItem('Favoritos',JSON.stringify(filmesFavoritos));
+            listarFavoritos();
+        }
+
         let Favoritos = JSON.parse(localStorage.getItem('Favoritos')) || [];
 
         if (Favoritos.some(filmeVal => filmeVal.id === filme.id)) {

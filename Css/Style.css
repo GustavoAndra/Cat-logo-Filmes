@@ -97,8 +97,8 @@ button .Bot{
 
 .card{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+ 
   align-items: center;
   background-color: #fff;
   border: 1px solid #e6e6e6;
@@ -130,12 +130,11 @@ button .Bot{
   max-width: 400px;
   max-height: 450px;
   justify-content: center;  
-  
   float: left;
   margin-left: 50px;
   padding-left: 25px;
-
 }
+
 .cardFilmeDeth
 {
   margin-bottom: 0;

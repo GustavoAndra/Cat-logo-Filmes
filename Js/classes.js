@@ -51,7 +51,7 @@ class Filme{
     cardBody.appendChild(this.getBtnDetalhes());
 
     return card;
-    };
+    }
 
 setBtnDetalhes= () =>{
     this.btnDetalhes = document.createElement('button');
