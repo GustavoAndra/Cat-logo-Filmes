@@ -53,6 +53,10 @@ let detalhesFilme = async (id)=>{
         document.querySelector("#lista-filme").style.display="none";
         
         document.querySelector("#mostrar-filme").style.display="flex";
+
+        // Remover conteúdo anterior
+        document.querySelector("#mostrar-filme").innerHTML="";
+
         console.log(filme.getCardDetalhes());
         document.querySelector("#mostrar-filme").appendChild(filme.getCardDetalhes());
 
@@ -62,21 +66,20 @@ let detalhesFilme = async (id)=>{
             document.querySelector("#mostrar-filme").style.display="none";
         }
 
-        document.querySelector("#btnSalvar").onclick=()=>{
+        let Favoritos = JSON.parse(localStorage.getItem('Favoritos')) || [];
 
-            let filmeString = localStorage.getItem('Favoritos');
-            let filmes = [];
-          
-            if (filmeString) {
-              filmes = JSON.parse(filmeString);
-            }
-        
-            filmes.push(filme);
-            localStorage.setItem('Favoritos', JSON.stringify(filmes));
+        if (Favoritos.some(filmeVal => filmeVal.id === filme.id)) {
+          // O filme já está nos favoritos, não faça nada
+          return;
         }
+        
+        Favoritos.push(filme);
+        localStorage.setItem("Favoritos", JSON.stringify(Favoritos));
+        
     });
-        return false;  
-    }
+    return false;  
+}
+
 let listarFilmes = async (filmes) => {
     let listaFilmes =  document.querySelector("#lista-filme");
     listaFilmes.style.display="";
@@ -95,7 +98,7 @@ let listarFilmes = async (filmes) => {
     }
   }
 
-function listarFavoritos() {
+  function listarFavoritos() {
     
     const favoritos = JSON.parse(localStorage.getItem('Favoritos'));
 
@@ -119,22 +122,6 @@ function listarFavoritos() {
   listarFilmes(favoritos);
 }
 
-
-function excluirFilme(Desfavoritar) {
-  let index = filmes.indexOf(Desfavoritar); 
-  if (index > -1)
-   { 
-
-    filmes.splice(index, 1); 
-    console.log(`"${Desfavoritar}" foi removido da lista de filmes.`);
-
-  } 
-  else
-   {
-    console.log(`"${Desfavoritar}" não foi encontrado na lista de filmes.`);
-  }
-}
-
-navfavoritos.onclick = () => {
+navfavoritos.onclick = () =>{
 listarFavoritos()
-}
+} 
