@@ -130,7 +130,7 @@ button .Bot{
   max-width: 400px;
   max-height: 450px;
   justify-content: center;  
-  display: inline-block;
+  
   float: left;
   margin-left: 50px;
   padding-left: 25px;
@@ -185,6 +185,14 @@ button .Bot{
   padding-left: 20px;
 }
 
+#btnDesfavoritar{
+  background-color: #000;
+  color: #fff;
+  border-radius: 25px;
+  width: 230px;
+  height: 30px;
+  padding-left: 20px;
+}
 #btnFechar:hover{
   color: #fff;
 }

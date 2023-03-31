@@ -1,7 +1,7 @@
 let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 let navfavoritos = document.querySelector("#nav-favoritos");
-
+let Desfavoritar = document.querySelector("#Desfavoritar")
 btnBuscarFilme.onclick = async ()=>{
     if(inputBuscarFilme.value.length > 0)
     {
@@ -51,14 +51,15 @@ let detalhesFilme = async (id)=>{
             resp.imdbRating
         )
         document.querySelector("#lista-filme").style.display="none";
+        
         document.querySelector("#mostrar-filme").style.display="flex";
         console.log(filme.getCardDetalhes());
         document.querySelector("#mostrar-filme").appendChild(filme.getCardDetalhes());
 
         document.querySelector("#btnFechar").onclick=()=>{
-            document.querySelector("#lista-filmes").style.display="flex";
+            document.querySelector("#lista-filme").style.display="";
             document.querySelector("#mostrar-filme").innerHTML="";
-            document.querySelector("#mostrar-filme").innerHTML="";
+            document.querySelector("#mostrar-filme").style.display="none";
         }
 
         document.querySelector("#btnSalvar").onclick=()=>{
@@ -69,21 +70,16 @@ let detalhesFilme = async (id)=>{
             if (filmeString) {
               filmes = JSON.parse(filmeString);
             }
-            
+        
             filmes.push(filme);
-
             localStorage.setItem('Favoritos', JSON.stringify(filmes));
         }
-
     });
-
         return false;  
     }
-  
-
 let listarFilmes = async (filmes) => {
     let listaFilmes =  document.querySelector("#lista-filme");
-    listaFilmes.style.display="flex";
+    listaFilmes.style.display="";
     listaFilmes.innerHTML="";
         document.querySelector("#lista-filme").innerHTML="";
         document.querySelector("#mostrar-filme").style.display="none";
@@ -99,11 +95,9 @@ let listarFilmes = async (filmes) => {
     }
   }
 
-  
 function listarFavoritos() {
     
     const favoritos = JSON.parse(localStorage.getItem('Favoritos'));
-    const filmesFavoritos = [];
 
     favoritos.forEach((item) => {
       const filme = new Filme(
@@ -125,6 +119,21 @@ function listarFavoritos() {
   listarFilmes(favoritos);
 }
 
+
+function excluirFilme(Desfavoritar) {
+  let index = filmes.indexOf(Desfavoritar); 
+  if (index > -1)
+   { 
+
+    filmes.splice(index, 1); 
+    console.log(`"${Desfavoritar}" foi removido da lista de filmes.`);
+
+  } 
+  else
+   {
+    console.log(`"${Desfavoritar}" não foi encontrado na lista de filmes.`);
+  }
+}
 
 navfavoritos.onclick = () => {
 listarFavoritos()

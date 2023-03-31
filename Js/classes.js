@@ -123,9 +123,14 @@ getCardDetalhes =  () => {
 
     let btnFechar = document.createElement("button");
     btnFechar.appendChild(document.createTextNode("Fechar"));
-
     btnFechar.setAttribute("id", "btnFechar");
     divDetalhes.appendChild(btnFechar);
+
+    let btnDes = document.createElement("button");
+    btnDes.appendChild(document.createTextNode("Desfavoritar"));
+    btnDes.setAttribute("id", "btnDesfavoritar");
+    divDetalhes.appendChild(btnDes);
+
     return cardDetalhe;
   };
   
