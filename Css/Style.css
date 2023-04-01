@@ -1,31 +1,40 @@
-*{
-  margin: 0;
-  padding: 0;
+
+
+.navbar-brand img
+{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 80px;
+}
+#input-buscar-filme{
+  border-radius: 15px;
+  border: none;
+}
+#input-buscar-filme:hover{
+  border: none;
+}
+.nav-link {
+  color: white !important;
 }
 
-.navbar-brand img{
-  width: 50px;
-}
-#lista-filmes
+#lista-filme
 {
   display:flex;
-  justify-content: row;
+  justify-content: start;
   flex-wrap: wrap;
+  flex-basis: 100%;
+  margin-left: 25px;
   
 }
 #mostrar-filme
 {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  padding: 2rem;
 }
-.carousel-inner img
-{
-  max-width: 50%;
-  max-height: 600px;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-left: 50px;
-}
+
 .card-filme-poster 
 {
   width: 100%;
@@ -57,7 +66,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   width: 100%;
 }
 
@@ -83,16 +92,12 @@ svg{
 button .Bot{
   margin-top: 25px;
 }
-.Flex-Container
-{
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 .card{
   display: flex;
   flex-direction: row;
- 
+ justify-content: center;
   align-items: center;
   background-color: #fff;
   border: 1px solid #e6e6e6;
