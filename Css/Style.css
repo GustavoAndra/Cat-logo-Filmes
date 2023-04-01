@@ -130,8 +130,10 @@ button .Bot{
   max-height: 450px;
   justify-content: center;  
   float: left;
-  margin-left: 50px;
-  padding-left: 25px;
+  margin: 20px;
+  margin-top: -10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .cardFilmeDeth
@@ -144,8 +146,16 @@ button .Bot{
 .cardInfos{
   width: 90%;
   margin: 10px;
+  color: #000;
+  font-family: Asap;
+  
 }
-
+.tt{
+  margin-left: 100px;
+  color: #000;
+  font-family: Asap;
+  align-items: center;
+}
 .info{
   width: 100%;
   font-size: 8pt;
@@ -190,6 +200,7 @@ button .Bot{
   width: 230px;
   height: 30px;
   padding-left: 20px;
+  margin: 10px;
 }
 
 #btnFechar:hover{
