@@ -186,7 +186,6 @@ getCardDetalhes =  () => {
 
     return cardDetalhe;
   };
-  
 getBtnDetalhes = () =>{
     return this.btnDetalhes;
 }

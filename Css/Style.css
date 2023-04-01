@@ -1,5 +1,7 @@
-
-
+*{
+  padding: 0;
+  margin: 0;
+}
 .navbar-brand img
 {
   width: 50px;
@@ -13,9 +15,6 @@
 }
 #input-buscar-filme:hover{
   border: none;
-}
-.nav-link {
-  color: white !important;
 }
 
 #lista-filme
@@ -202,7 +201,15 @@ button .Bot{
   padding-left: 20px;
   margin: 10px;
 }
-
+#btnEditar{
+  background-color: #000;
+  color: #fff;
+  border-radius: 25px;
+  width: 230px;
+  height: 30px;
+  padding-left: 20px;
+  margin: 10px;
+}
 #btnFechar:hover{
   color: #fff;
 }

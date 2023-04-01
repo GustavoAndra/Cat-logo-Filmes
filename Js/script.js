@@ -2,6 +2,8 @@ let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 let navfavoritos = document.querySelector("#nav-favoritos");
 
+
+
 btnBuscarFilme.onclick = async ()=>{
    
    
@@ -80,7 +82,7 @@ let detalhesFilme = async (id)=>{
         let Favoritos = JSON.parse(localStorage.getItem('Favoritos')) || [];
 
         if (Favoritos.some(filmeVal => filmeVal.id === filme.id)) {
-          // O filme já está nos favoritos, não faça nada
+        
           return;
         }
         
