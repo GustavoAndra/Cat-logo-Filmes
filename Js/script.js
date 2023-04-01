@@ -1,8 +1,12 @@
 let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 let navfavoritos = document.querySelector("#nav-favoritos");
-let Desfavoritar = document.querySelector("#Desfavoritar")
+let conteudoHTML = document.querySelector("#conteudo-html");
+
+
 btnBuscarFilme.onclick = async ()=>{
+   
+   
     if(inputBuscarFilme.value.length > 0)
     {
         let filmes = new Array();
@@ -52,7 +56,7 @@ let detalhesFilme = async (id)=>{
         )
         document.querySelector("#lista-filme").style.display="none";
         
-        document.querySelector("#mostrar-filme").style.display="flex";
+        document.querySelector("#mostrar-filme").style.display="";
 
         // Remover conteúdo anterior
         document.querySelector("#mostrar-filme").innerHTML="";

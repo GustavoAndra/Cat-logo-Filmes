@@ -34,7 +34,7 @@ class Filme{
     let divClassificacao=document.createElement("div");
     divClassificacao.setAttribute("style","flex-grow:1;");
 
-    hCardTitle.appendChild(document.createTextNode("Nome: "+this.titulo));
+    hCardTitle.appendChild(document.createTextNode(this.titulo));
     divGenero.appendChild(document.createTextNode(this.genero));
     divAnoProducao.appendChild(document.createTextNode(this.ano));
     divClassificacao.appendChild(document.createTextNode(this.classi));
@@ -117,19 +117,22 @@ getCardDetalhes =  () => {
     divDetalhes.appendChild(filmDura);
 
     let btnSalvar=document.createElement("button");
-    btnSalvar.appendChild(document.createTextNode("Salvar"));
+    btnSalvar.appendChild(document.createTextNode("Favoritar"));
     btnSalvar.setAttribute("id", "btnSalvar");
     divDetalhes.appendChild(btnSalvar);
-
-    let btnFechar = document.createElement("button");
-    btnFechar.appendChild(document.createTextNode("Fechar"));
-    btnFechar.setAttribute("id", "btnFechar");
-    divDetalhes.appendChild(btnFechar);
 
     let btnDes = document.createElement("button");
     btnDes.appendChild(document.createTextNode("Desfavoritar"));
     btnDes.setAttribute("id", "btnDesfavoritar");
     divDetalhes.appendChild(btnDes);
+    
+    let btnFechar = document.createElement("button");
+    btnFechar.appendChild(document.createTextNode("Voltar"));
+    btnFechar.setAttribute("id", "btnFechar");
+    divDetalhes.appendChild(btnFechar);
+
+   
+
 
     return cardDetalhe;
   };

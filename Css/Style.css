@@ -3,34 +3,28 @@
   padding: 0;
 }
 
-
 .navbar-brand img{
   width: 50px;
 }
 #lista-filmes
 {
   display:flex;
-  justify-content: start;
+  justify-content: row;
   flex-wrap: wrap;
-  padding: 2rem;
+  
 }
-
-.card-filme
+#mostrar-filme
 {
-  margin-top: 80px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  justify-content: center;
+}
+.carousel-inner img
+{
+  max-width: 50%;
+  max-height: 600px;
   border-radius: 10px;
-  box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  width: 350px;
-  max-width: 500px;
-  margin-bottom: 1rem;
-  margin-left: 5rem;
+  margin-top: 10px;
+  margin-left: 50px;
 }
 .card-filme-poster 
 {
@@ -192,6 +186,7 @@ button .Bot{
   height: 30px;
   padding-left: 20px;
 }
+
 #btnFechar:hover{
   color: #fff;
 }
